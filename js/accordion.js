@@ -17,7 +17,8 @@ class Accordion {
 		this.btnClose = btnClose;
 		this.animSpeed = animSpeed;
 		this.event = event;
-    this.isAnimating = false;
+    	this.isAnimating = false;
+		this.init();
 	}
 
   init() {
@@ -39,7 +40,7 @@ class Accordion {
       const btnClose = holder.slide.querySelector(this.btnClose);
 
       holder.addEventListener(this.event, (e) => {
-        if (e.target?.classList.contains(this.opener.slice(1))) {
+        if (e.target?.classList.contains(this.opener.slice(1)) || e.target.closest(this.opener)) {
           e.preventDefault();
           this.switchSlides(holder);
         }
